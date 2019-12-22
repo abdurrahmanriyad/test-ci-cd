@@ -1,0 +1,21 @@
+dist: bionic
+language: php
+php:
+ 7.2
+services: 
+ mysql
+before_install:
+ - mysql -e 'CREATE DATABASE test;'
+before_script:
+ - composer install
+ - cp .env.example .env
+ - php artisan key:generate
+cache:
+ directories:
+  - ./vendor
+ 
+after_success:
+ - ssh {ssh_user}@165.227.92.241
+ - 
+ - cd /var/www/test-ci
+ - git pull origin git@github.com:abdurrahmanriyad/test-ci-cd.git
