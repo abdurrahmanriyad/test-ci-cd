@@ -1,0 +1,16 @@
+dist: bionic
+language: php
+php:
+ 7.2
+services: 
+ mysql
+before_install:
+ - mysql -e 'CREATE DATABASE test;'
+before_script:
+ - composer install
+ - cp .env.example .env
+ - php artisan key:generate
+cache:
+ directories:
+  - ./vendor
+ 
