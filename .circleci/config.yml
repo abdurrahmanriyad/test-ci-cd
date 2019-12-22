@@ -3,4 +3,6 @@ jobs:
   build:
     docker:
       - image: circleci/php:7.2
-    working_directory: ~/laravel
+    working_directory: ~/
+    steps:
+      - run: touch .env
