@@ -13,8 +13,3 @@ before_script:
 cache:
  directories:
   - ./vendor
- 
-after_success:
- - ssh ${ssh_user}@${ssh_password}
- - স cd /var/www/test-ci
- - git pull origin git@github.com:abdurrahmanriyad/test-ci-cd.git
