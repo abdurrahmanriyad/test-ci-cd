@@ -9,5 +9,6 @@ jobs:
    - run: php artisan key:generate
    - run: compose install
    - save_cache:
-      paths: 
+      key: vendor	
+      paths:		 
        - vendor	
