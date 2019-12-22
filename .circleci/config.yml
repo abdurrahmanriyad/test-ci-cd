@@ -1,14 +1,14 @@
 version: 2
 jobs:
- build:
-  docker:
-   - image: circleci/php:7.2
-  working_directory: ~/
-  steps:
-   - run: cp .env.example .env
-   - run: php artisan key:generate
-   - run: compose install
-   - save_cache:
-      key: vendor	
-      paths:		 
-       - vendor	
+  build:
+    docker:
+      - image: circleci/php:7.2
+    working_directory: ~/
+    steps:
+      - run: cp .env.example .env
+      - run: php artisan key:generate
+      - run: compose install
+      - save_cache:
+          key: vendor
+          paths:
+            - vendor
