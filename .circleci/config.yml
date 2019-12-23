@@ -11,7 +11,8 @@ jobs:
       enabled: true
     steps: 
       - run: ssh -oStrictHostKeyChecking=no -v $SSH_USER@$SSH_HOST
-      - run: pwd
+      - run: ./deploy_project.sh
+      - run: exit
 
 
 workflows:
