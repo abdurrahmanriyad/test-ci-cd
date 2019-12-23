@@ -6,3 +6,12 @@ jobs:
     working_directory: ~/
     steps:
       - run: touch .env
+  deploy:
+    machine: 
+      enabled: true
+    steps: 
+      - run:
+          name: Deploy Over SSH
+          command: 
+            ssh $SSH_USER@$SSH_HOST
+      - run: cd /var/www; mkdir test
