@@ -10,7 +10,9 @@ jobs:
     machine:
       enabled: true
     steps: 
-      - run: ssh -oStrictHostKeyChecking=no -v $SSH_USER@$SSH_HOST “./deploy_project.sh”
+      - run: ssh -oStrictHostKeyChecking=no -v $SSH_USER@$SSH_HOST
+      - run: pwd
+
 
 workflows:
   version: 2
