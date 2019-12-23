@@ -6,12 +6,14 @@ jobs:
     working_directory: ~/
     steps:
       - run: touch .env
-  deploy:
+  deploy-prod:
     machine: 
       enabled: true
     steps: 
+      - checkout
       - run:
           name: Deploy Over SSH
           command: 
             ssh $SSH_USER@$SSH_HOST
-      - run: cd /var/www; mkdir test
+      - run: cd /var/www/test-ci
+      - run: git clone https://github.com/abdurrahmanriyad/test-ci-cd.git
