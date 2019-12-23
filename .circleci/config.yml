@@ -6,14 +6,19 @@ jobs:
     working_directory: ~/
     steps:
       - run: touch .env
-  deploy-prod:
-    machine: 
-      enabled: true
+  deploy:
     steps: 
-      - checkout
-      - run:
-          name: Deploy Over SSH
-          command: 
-            ssh $SSH_USER@$SSH_HOST
-      - run: cd /var/www/test-ci
-      - run: git clone https://github.com/abdurrahmanriyad/test-ci-cd.git
+      - run: ssh -oStrictHostKeyChecking=no -v $SSH_USER@$SSH_HOST “./deploy_project.sh”
+
+workflows:
+  version: 2
+  build-and-deploy:
+    jobs:
+      - build
+      - deploy:
+          filters:
+            branches:
+              only:
+                - master
+          requires:
+            - build
