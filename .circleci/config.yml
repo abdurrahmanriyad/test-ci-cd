@@ -10,9 +10,7 @@ jobs:
     machine:
       enabled: true
     steps: 
-      - run: ssh -oStrictHostKeyChecking=no -v $SSH_USER@$SSH_HOST
-      - run: ./deploy_project.sh
-      - run: exit
+      - run: ssh -oStrictHostKeyChecking=no -v $SSH_USER@$SSH_HOST "pwd"
 
 
 workflows:
